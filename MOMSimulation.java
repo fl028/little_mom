@@ -10,7 +10,14 @@ import client.Subscriber;
 import model.*;
 
 /**
- * Simulates the message-oriented middleware system.
+ * Die Klasse {@code MOMSimulation} repräsentiert eine einfache Simulation einer MOM (message oriented middleware).
+ * <p>
+ * Diese Klasse enthält die Hauptmethode, um die Simulation zu starten.
+ * </p>
+ *
+ * @author Nils Hepp, Florian Böhm
+ * @version 1.0
+ * @since 2024-08-12
  */
 public class MOMSimulation {
     private static final long SIMULATION_DURATION_MS = 5000; 
