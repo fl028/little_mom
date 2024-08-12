@@ -14,15 +14,19 @@ The project is implemented with a Visual Studio Code Development Container. For 
 
 - `java -version`
 
-## TODO (Generate Jar)
+## Build and Package with Maven
 
-### Generate project
-- `mvn archetype:generate -DgroupId=de.dhbw.cas -DartifactId=little_mom -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+To build the JAR file and generate JavaDocs, use Maven:
 
-### Generate Jar
-- `mvn clean package`
+- Build the JAR file: `cd little_mom && mvn clean package`
+- Generate the JavaDocs: `cd little_mom && mvn javadoc:javadoc`
 
-### Run Jar
-- `java -jar target/little_mom-1.0.jar`
+The resulting JAR file and JavaDocs will be located in the `target` directory.
 
+## Run jar
 
+- `java -jar little_mom-1.0.jar`
+
+## View docs
+
+- [JavaDocs](apidocs/index.html)
