@@ -21,11 +21,11 @@ To build the JAR file and generate JavaDocs, use Maven:
 - Build the JAR file: `cd little_mom && mvn clean package`
 - Generate the JavaDocs: `cd little_mom && mvn javadoc:javadoc`
 
-The resulting JAR file and JavaDocs will be located in the `target` directory.
+The resulting JAR file and JavaDocs will be placed in the repo.
 
 ## Run jar
 
-- `java -jar little_mom-1.0.jar`
+- `java -jar little_mom.jar`
 
 ## View docs
 
