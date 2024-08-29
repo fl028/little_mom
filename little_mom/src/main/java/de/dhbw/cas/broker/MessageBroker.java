@@ -32,11 +32,13 @@ public class MessageBroker {
      * @param message the message to publish
      */
     public synchronized void publish(Message message) {
-        messageQueue.add(message);
-        messageCount++;
-        messageCountByTopic.put(message.getTopic(), messageCountByTopic.getOrDefault(message.getTopic(), 0) + 1);
-        System.out.println("Published: " + message);
-        notifyAll();
+        if (running) {
+            messageQueue.add(message);
+            messageCount++;
+            messageCountByTopic.put(message.getTopic(), messageCountByTopic.getOrDefault(message.getTopic(), 0) + 1);
+            System.out.println("Published: " + message);
+            notifyAll();
+        }
     }
 
     /**
@@ -110,10 +112,8 @@ public class MessageBroker {
      * 
      * @return a map of topics to their respective message counts
      */
-    public Map<Topic, Integer> getMessageCountByTopic() {
-        synchronized (this) {
-            return new HashMap<>(messageCountByTopic);
-        }
+    public synchronized Map<Topic, Integer> getMessageCountByTopic() {
+        return new HashMap<>(messageCountByTopic);
     }
 
     /**
@@ -121,9 +121,7 @@ public class MessageBroker {
      * 
      * @return the list of subscribers
      */
-    public List<Subscriber> getSubscribers() {
-        synchronized (this) {
-            return new ArrayList<>(subscribers.values().stream().flatMap(List::stream).distinct().toList());
-        }
+    public synchronized List<Subscriber> getSubscribers() {
+        return new ArrayList<>(subscribers.values().stream().flatMap(List::stream).distinct().toList());
     }
 }

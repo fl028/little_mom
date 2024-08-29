@@ -86,12 +86,6 @@ public class MOMSimulation {
 
         // Stop the dispatching thread
         broker.stop();
-        try {
-            dispatchThread.join();
-        } catch (InterruptedException e) {
-            System.out.println("Dispatch thread was interrupted while waiting for it to finish.");
-            Thread.currentThread().interrupt();
-        }
 
         // Ensure all threads have completed
         for (Thread thread : threads) {
